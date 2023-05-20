@@ -19,6 +19,8 @@ import {
   Toast,
   Box,
   Flex,
+  Pressable,
+  Icon,
 } from "native-base";
 import { auth } from "../config/firebase.js";
 import { Formik, Form, Field } from "formik";
@@ -46,6 +48,9 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const passwordRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPwd, setShowPwd] = useState(false);
+  const [confPwdShow, setConfPwdShow] = useState(false);
+
   // const toast = useToast();
 
   // const validateEmail = (email) => {
@@ -177,12 +182,24 @@ const SignUpScreen = ({ navigation }) => {
                   Password
                 </FormControl.Label>
                 <Input
-                  secureTextEntry={true}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   value={values.password}
                   variant="rounded"
                   placeholder="Enter password"
+                  secureTextEntry={!showPwd}
+                  InputRightElement={
+                    <Pressable onPress={() => setShowPwd(!showPwd)}>
+                      <Icon
+                        as={
+                          <FontAwesome name={showPwd ? "eye" : "eye-slash"} />
+                        }
+                        size={5}
+                        mr="2"
+                        color="muted.400"
+                      />
+                    </Pressable>
+                  }
                 />
                 {touched.password && errors.password && (
                   <FormControl.ErrorMessage
@@ -201,12 +218,26 @@ const SignUpScreen = ({ navigation }) => {
                   Confirm Password
                 </FormControl.Label>
                 <Input
-                  secureTextEntry={true}
                   onChangeText={handleChange("confirmPassword")}
                   onBlur={handleBlur("confirmPassword")}
                   value={values.confirmPassword}
                   variant="rounded"
                   placeholder="Confirm password"
+                  secureTextEntry={!confPwdShow}
+                  InputRightElement={
+                    <Pressable onPress={() => setConfPwdShow(!confPwdShow)}>
+                      <Icon
+                        as={
+                          <FontAwesome
+                            name={confPwdShow ? "eye" : "eye-slash"}
+                          />
+                        }
+                        size={5}
+                        mr="2"
+                        color="muted.400"
+                      />
+                    </Pressable>
+                  }
                 />
                 {touched.confirmPassword && errors.confirmPassword && (
                   <FormControl.ErrorMessage
@@ -225,20 +256,19 @@ const SignUpScreen = ({ navigation }) => {
               >
                 Sign Up
               </Button>
+              <View style={styles.bottomTextContainer}>
+                <Text style={styles.bottomText}>Already joined?</Text>
+                <Button
+                  _text={{ color: Colors.linkColor, fontSize: "16" }}
+                  variant="link"
+                  onPress={() => navigation.navigate("LoginScreen")}
+                >
+                  Sign In
+                </Button>
+              </View>
             </View>
           )}
         </Formik>
-
-        <View style={styles.bottomTextContainer}>
-          <Text style={styles.bottomText}>Already joined?</Text>
-          <Button
-            _text={{ color: Colors.linkColor, fontSize: "16" }}
-            variant="link"
-            onPress={() => navigation.navigate("LoginScreen")}
-          >
-            Sign In
-          </Button>
-        </View>
       </KeyboardAwareScrollView>
     </NativeBaseProvider>
   );
@@ -249,7 +279,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    height: screenHeight,
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.white,
@@ -286,11 +316,9 @@ const styles = StyleSheet.create({
     color: Colors.textColor,
     flexDirection: "row",
     alignItems: "center",
-
+    marginTop: 20,
     width: "100%",
     justifyContent: "center",
-    position: "absolute",
-    bottom: 10,
   },
   labels: {
     marginLeft: 10,

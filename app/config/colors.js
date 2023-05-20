@@ -10,4 +10,8 @@ export default {
   errorBack: "#160b0b",
   errorFont: "#f4c7c7",
   errorIcon: "#f44336",
+  fbColor: "#3b5998",
+  twitterColor: "#00aced",
+  googleColor: "#dd4b39",
+  disbledColor: "#8888",
 };

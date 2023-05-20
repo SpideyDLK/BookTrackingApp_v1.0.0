@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "382108518213",
+    "project_id": "booktrackingapp-efc5a",
+    "storage_bucket": "booktrackingapp-efc5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382108518213:android:d1021120c9934431dfe02c",
+        "android_client_info": {
+          "package_name": "com.spidey.bta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382108518213-r5o22pbuig4f1ce5eppsirmr00r2ta3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spidey.bta",
+            "certificate_hash": "35574ea85fe14c6adc7835f1f378fc071430555a"
+          }
+        },
+        {
+          "client_id": "382108518213-kkf5hbtj8b49qduemdveghqh227qdu9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkXH3cSYGQoH0Y_2wS0eY10-K-HILXFwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382108518213-kkf5hbtj8b49qduemdveghqh227qdu9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
